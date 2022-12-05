@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
 
@@ -34,8 +35,22 @@ public class Student {
         return grades;
     }
 
-    public void setGrades(ArrayList<Integer> grades) {
-        this.grades = grades;
+    public void addGrade(int grade) {
+        grades.add(grade);
+    }
+
+    public double getGradeAverage(List<Integer> grades) {
+        if (grades == null || grades.isEmpty()) {
+            return 0;
+        }
+
+        double sum = 0;
+        for (Integer grade : grades) {
+            sum += grade;
+        }
+
+        return sum / grades.size();
+
     }
 
 }
