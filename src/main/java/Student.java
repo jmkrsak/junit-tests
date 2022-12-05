@@ -9,6 +9,10 @@ public class Student {
 
     private ArrayList<Integer> grades;
 
+    public Student() {
+
+    }
+
     public Student(String name, long id, ArrayList<Integer> grades) {
         this.name = name;
         this.id = id;
