@@ -22,28 +22,39 @@ public class StudentTest {
         studentWithMany.getGrades().add(20);
         studentWithMany.getGrades().add(30);
         studentWithMany.getGrades().add(40);
-        studentWithMany.getGrades().add(50);
+    }
+
+    @Test
+    public void testIfGradesIsInitialized() {
+        assertNotNull(studentWithOne.getGrades());
+    }
+
+    @Test
+    public void testIfGradesCanBeAdded(){
+        assertEquals(1, studentWithOne.getGrades().size());
+        studentWithOne.getGrades().add(50);
+        assertEquals(2, studentWithOne.getGrades().size());
+        assertSame(10, studentWithOne.getGrades().get(0));
+        assertSame(50, studentWithOne.getGrades().get(1));
     }
 
     @Test
     public void testIsEmpty(){
-        assertTrue(emptyStudent.isEmpty());
-        assertFalse(studentWithOne.isEmpty());
+        assertTrue(emptyStudent.getGrades().isEmpty());
+        assertFalse(studentWithOne.getGrades().isEmpty());
     }
 
     @Test
     public void testSize(){
-        assertEquals(0, emptyStudent.size());
-        assertEquals(1, studentWithOne.size());
-        // Testing sizes is tricky, setting boundaries is always a good idea.
-        // Test 0, 1 and many but not 2
-        assertEquals(4, studentWithMany.size());
+        assertEquals(0, emptyStudent.getGrades().size());
+        assertEquals(1, studentWithOne.getGrades().size());
+        assertEquals(3, studentWithMany.getGrades().size());
     }
 
     @Test
     public void testAdd(){
         // Making sure the emptyStudent returns true
-        assertTrue(emptyStudent.isEmpty());
+        assertTrue(emptyStudent.getGrades().isEmpty());
 
         // Add any tortilla to make it not empty anymore
         emptyStudent.add("Any tortilla");
